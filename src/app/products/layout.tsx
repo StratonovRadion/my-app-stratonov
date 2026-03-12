@@ -2,6 +2,13 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 
+export const metadata: Metadata = {
+  title:'My Blog',
+  keywords:['Next.js', 'React', 'JavaScript'],
+  description: 'Lorem sljkdjfjkjhfdkh ksafkh'
+}
+
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ru">
