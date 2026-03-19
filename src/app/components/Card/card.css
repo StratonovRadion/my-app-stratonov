@@ -1,0 +1,55 @@
+.task-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #f0f0f0;
+  margin: 10px;
+}
+
+
+.task-card.completed-card {
+  background-color: #f4fdf8; 
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.task-info h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.task-meta {
+  margin: 0;
+  font-size: 13px;
+  color: #888;
+}
+
+
+.badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.badge-progress {
+  background-color: #f3f4f6;
+  color: #4b5563;
+}
+
+.badge-completed {
+  background-color: #111827; 
+  color: #ffffff;
+}
