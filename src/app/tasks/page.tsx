@@ -1,4 +1,5 @@
 import { cache } from "react";
+import {cacheLife} from "next/cache";
 import TaskList from "../components/List/list";
 import "./tasks.css";
 
@@ -10,16 +11,20 @@ export interface Task {
 }
 
 
-export const getPost = cache(async () => {
+export async function getTasks() {
+  'use cache'
+
+  cacheLife('hours')
+
     const post = await fetch("https://jsonplaceholder.typicode.com/todos?_limit=10")
 
-    return post
-})
+    return post.json()
+}
 
 export default async function TasksPage() {
 
-  const response = await getPost();
-  const tasks: Task[] = await response.json();
+  const response = await getTasks();
+  const tasks: Task[] = await response;
 
   return (
     <div className="task">
