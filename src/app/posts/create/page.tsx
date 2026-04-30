@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useRouter } from "next/navigation";
+import { createPostAction } from "../actions";
 
 const schema = yup.object({
   title: yup.string().required("Поле Title обязательно"),
@@ -18,24 +19,13 @@ export default function CreatePostPage() {
 
   const onSubmit = async (data: any) => {
     try {
-      const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-        method: "POST",
-        body: JSON.stringify({
-          title: data.title,
-          body: data.body,
-          userId: 1, 
-        }),
-        headers: {
-          "Content-type": "application/json; charset=UTF-8",
-        },
-      });
-
-      if (response.ok) {
-        console.log("Пост успешно создан");
-        router.push("/posts");
-      }
+      await createPostAction(data);
+      
+      console.log("Пост успешно создан, кеш сброшен");
+      
+      router.push("/posts");
     } catch (error) {
-      console.error("Ошибка при отправке запроса:", error);
+      console.error("Ошибка:", error);
     }
   };
 
@@ -43,7 +33,6 @@ export default function CreatePostPage() {
     <div style={{ padding: '2rem' }}>
       <h1>Создать пост</h1>
       <form onSubmit={handleSubmit(onSubmit)} style={{ display: 'flex', flexDirection: 'column', gap: '1rem', width: '300px' }}>
-        
         <div>
           <input {...register("title")} placeholder="Title" />
           {errors.title && <p style={{color: 'red', margin: 0}}>{errors.title.message}</p>}
