@@ -1,0 +1,50 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "tasks": "Tasks",
+    "posts": "Posts"
+  },
+  "home": {
+    "title": "Main Page",
+    "description": "This is an example page in Next.js",
+    "welcomeUser": "Welcome, {{name}}!",
+    "itemsCount_one": "{{count}} item",
+    "itemsCount_other": "{{count}} items"
+  },
+  "products": {
+    "title": "Products",
+    "id": "ID",
+    "userId": "User ID",
+    "name": "Name",
+    "body": "Description",
+    "backToProducts": "Back to Products",
+    "comments": "Comments",
+    "viewComments": "View comments",
+    "dynamicRoute": "Dynamic Route",
+    "paramValue": "Parameter value"
+  },
+  "tasks": {
+    "title": "Task List",
+    "completed": "Completed",
+    "pending": "Pending",
+    "taskCount_one": "{{count}} task",
+    "taskCount_other": "{{count}} tasks"
+  },
+  "posts": {
+    "title": "Posts",
+    "createPost": "Create Post",
+    "backToPosts": "Back to Posts",
+    "date": "Date"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Page not found"
+  },
+  "footer": {
+    "text": "Site Footer"
+  },
+  "header": {
+    "text": "Site Header"
+  }
+}

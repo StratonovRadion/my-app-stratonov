@@ -1,0 +1,54 @@
+{
+  "nav": {
+    "home": "Главная",
+    "products": "Продукты",
+    "tasks": "Задачи",
+    "posts": "Посты"
+  },
+  "home": {
+    "title": "Главная страница",
+    "description": "Это пример страницы в Next.js",
+    "welcomeUser": "Добро пожаловать, {{name}}!",
+    "itemsCount_one": "{{count}} элемент",
+    "itemsCount_few": "{{count}} элемента",
+    "itemsCount_many": "{{count}} элементов",
+    "itemsCount_other": "{{count}} элементов"
+  },
+  "products": {
+    "title": "Продукты",
+    "id": "ID",
+    "userId": "ID пользователя",
+    "name": "Название",
+    "body": "Описание",
+    "backToProducts": "Назад к продуктам",
+    "comments": "Комментарии",
+    "viewComments": "Просмотреть комментарии",
+    "dynamicRoute": "Динамический маршрут",
+    "paramValue": "Значение параметра"
+  },
+  "tasks": {
+    "title": "Список задач",
+    "completed": "Выполнено",
+    "pending": "В ожидании",
+    "taskCount_one": "{{count}} задача",
+    "taskCount_few": "{{count}} задачи",
+    "taskCount_many": "{{count}} задач",
+    "taskCount_other": "{{count}} задачи"
+  },
+  "posts": {
+    "title": "Посты",
+    "createPost": "Создать пост",
+    "backToPosts": "Назад к постам",
+    "date": "Дата"
+  },
+  "notFound": {
+    "title": "404",
+    "message": "Страница не найдена"
+  },
+  "footer": {
+    "text": "Подвал сайта"
+  },
+  "header": {
+    "text": "Шапка сайта"
+  }
+}
