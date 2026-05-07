@@ -1,45 +1,22 @@
-import { createInstance } from "i18next";
-import resourcesToBackend from "i18next-resources-to-backend";
 import { headers as _headers } from "next/headers";
-import { FALLBACK_LANG, LANGUAGES, DEFAULT_NS, HEADER_NAME } from "./constants";
-
-
-async function createServerI18n(language: string, ns: string | string[]) {
-  const instance = createInstance();
-
-  await instance
-    .use(
-      resourcesToBackend(
-        (lang: string, namespace: string) =>
-          import(`../locales/${lang}/${namespace}.json`)
-      )
-    )
-    .init({
-      supportedLngs: LANGUAGES,
-      fallbackLng: FALLBACK_LANG,
-      lng: language,
-      fallbackNS: DEFAULT_NS,
-      defaultNS: DEFAULT_NS,
-      contextSeparator: ".",
-      returnObjects: true,
-      ns: Array.isArray(ns) ? ns : [ns],
-    });
-
-  return instance;
-}
+import { HEADER_NAME } from "./constants";
+import i18next from "./client";
 
 export async function getT(
-  ns: string | string[] = DEFAULT_NS,
+  ns?: string | string[],
   lang?: string | null,
   keyPrefix?: string
 ) {
-  const headersList = await _headers();
-  const language = (lang || headersList.get(HEADER_NAME) || FALLBACK_LANG) as string;
-
-  const instance = await createServerI18n(language, ns);
-
+  const headers = await _headers();
+  const language = lang || headers.get(HEADER_NAME);
+  if (language && i18next.resolvedLanguage !== language) {
+    await i18next.changeLanguage(language);
+  }
+  if (ns && !i18next.hasLoadedNamespace(ns)) {
+    await i18next.loadNamespaces(ns);
+  }
   return {
-    t: instance.getFixedT(language, Array.isArray(ns) ? ns[0] : ns, keyPrefix),
-    i18n: instance,
+    t: i18next.getFixedT(language ?? i18next.resolvedLanguage!, ns, keyPrefix),
+    i18n: i18next,
   };
 }
